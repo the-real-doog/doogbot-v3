@@ -1,16 +1,19 @@
 const Discord = require('discord.js');
 const bot = new  Discord.Client
 
-const token = 'NjA5NzUzNjA1NzA4MTg1NjIz.XVDpHA.VxK9Rs_yjOaokXhvryqw72zHdPY';
+const token = process.env.TOKEN;
 
+require('dotenv/config');
+
+const http = require('http');
+const port = process.env.PORT || 3000;
+http.createServer().listen(port);
 
 bot.on('ready', () =>{
     console.log('online');
 
     bot.user.setActivity('your mom', { type: 'WATCHING'}).catch(console.error);
 })
-
-bot.login(process.env.token);
 
 bot.on('message', message=>{
 
@@ -61,6 +64,10 @@ if (message.content.includes('honk')) {
     message.channel.sendFile('./hOnK.ogg');
 }
 
+});
+
+bot.on('error', err => {
+    console.log(err);
 });
 
 bot.login(token);
