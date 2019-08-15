@@ -10,6 +10,8 @@ bot.on('ready', () =>{
     bot.user.setActivity('your mom', { type: 'WATCHING'}).catch(console.error);
 })
 
+bot.login(process.env.token);
+
 bot.on('message', message=>{
 
 if (message.content.includes('karkat')) {
